@@ -1,17 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+const name = 'max';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+// стили онлайн в в иде обхекта
+const red = {
+    color: 'red'
+}
+// формат react js
+const render = React.createElement('div', null,
+    React.createElement('header', null,
+        React.createElement('img', {
+            src: 'logo512.png',
+            alt: 'logo',
+            className: 'logo',
+        }),
+        React.createElement('h1', null, 'hallo world')),
+    React.createElement('main', null,
+        React.createElement('p', null, 'a javascript lebrary for building user')),
 );
+// формат jsx
+const renderJSX = (
+    <div>
+        <header>
+            <img src="logo512.png" alt="logo" />
+        </header>
+        <main>
+            <p>a javascript lebrary for building user</p>
+            <p style= {red}> hello my name is {name}</p>
+        </main>
+    </div>
+)
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(renderJSX, document.getElementById('root'))
