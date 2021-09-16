@@ -1,0 +1,11 @@
+.dialogItem{
+    margin-bottom: 10px;
+}
+.dialogItem a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color:var(--color-accent);
+}
+.dialogItem.active a{
+    color:var(--color-accent);
+}

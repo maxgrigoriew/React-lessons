@@ -1,0 +1,17 @@
+.header {
+    padding: 15px;
+    /*background: rgba(136, 126, 126, 0.22);*/
+    grid-area: A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #89a1ff;
+}

@@ -1,0 +1,13 @@
+.app-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 30px;
+    max-width: 1400px;
+    padding: 0 15px;
+    margin: 0 auto;
+    grid-template-areas:
+    "A A"
+    "B C";
+}
+
+
