@@ -1,7 +1,7 @@
 
-.nav {
+.navWrapper {
     grid-area: B;
-
+    margin-bottom: 200px;
 }
 .nav__list{
     list-style: none;
