@@ -12,6 +12,7 @@ function App(props) {
 	return (
 			<div className="app-wrapper">
 				<Head/>
+				<Nav navFrendsData={props.state.dialogsPage.navFrendsData}></Nav>
 				<div className="app-wrapper-content">
 					<Route path='/dialogs' component={() =>
 						<Dialogs dialogs={props.state.dialogsPage.dialogs}
