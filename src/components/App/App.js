@@ -7,21 +7,22 @@ import { Route} from "react-router-dom";
 import News from "../News/News";
 import Mus from "../Mus/Mus";
 import Settings from "../Settings/Settings";
+import store from "../../Redux/state";
 function App(props) {
 	
 	return (
 			<div className="app-wrapper">
 				<Head/>
-				<Nav navFrendsData={props.state.dialogsPage.navFrendsData}></Nav>
+				<Nav navFrendsData={props.store.state.dialogsPage.navFrendsData}></Nav>
 				<div className="app-wrapper-content">
 					<Route path='/dialogs' component={() =>
-						<Dialogs dialogs={props.state.dialogsPage.dialogs}
-						         messages={props.state.dialogsPage.messages}
-						         addMessage={props.addMessage}/>}/>
+						<Dialogs dialogs={props.store.state.dialogsPage.dialogs}
+						         newMessage={props.store.state.dialogsPage.newMessages}
+						         messages={props.store.state.dialogsPage.messages}
+						         dispatch={props.store.dispatch.bind(store)}/>}/>
 					<Route path='/profile' component={() =>
-						<Profile profilePage={props.state.profilePage}
-						         updateNewPostTest={props.updateNewPostTest}
-						         addPost={props.addPost}/>}/>
+						<Profile profilePage={props.store.state.profilePage}
+						         dispatch={props.store.dispatch.bind(store)}/>}/>
 					<Route path='/news' component={News}/>
 					<Route path='/musik' component={Mus}/>
 					<Route path='/settings' component={Settings}/>

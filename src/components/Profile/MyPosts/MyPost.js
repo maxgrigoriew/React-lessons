@@ -4,17 +4,16 @@ import Post from "./Post/Post";
 
 const MyPost = (props) => {
 	//создаем ссылку на какой либо элемент
-	
 	let newPastElement = React.createRef();
 	let myPostsItems = props.myPosts.map(item => <Post text={item.mes} id={item.id}/>)
 	
 	const addPosts = () => {
-		props.addPost()
+		props.dispatch({type: 'ADD-POST'})
 	}
 	
 	let onPostChange = () => {
 		let text = newPastElement.current.value
-		props.updateNewPostTest(text)
+		props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text})
 	}
 	
 	return (
