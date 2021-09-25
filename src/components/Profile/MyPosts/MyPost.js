@@ -1,19 +1,19 @@
 import React from "react";
 import s from './MyPost.module.css'
 import Post from "./Post/Post";
-
+import {addPostCreater, onPostChangeCreater} from "../../../Redux/state";
 const MyPost = (props) => {
 	//создаем ссылку на какой либо элемент
 	let newPastElement = React.createRef();
 	let myPostsItems = props.myPosts.map(item => <Post text={item.mes} id={item.id}/>)
 	
 	const addPosts = () => {
-		props.dispatch({type: 'ADD-POST'})
+		props.dispatch(addPostCreater())
 	}
 	
 	let onPostChange = () => {
 		let text = newPastElement.current.value
-		props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text})
+		props.dispatch(onPostChangeCreater(text))
 	}
 	
 	return (

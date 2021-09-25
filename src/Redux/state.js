@@ -54,6 +54,10 @@
 //
 // 	}
 // }
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const ADD_DIALOGS_MESSAGE = 'ADD-DIALOGS-MESSAGE'
+const UPDATE_DIALOGS_NEW_MESSAGE = 'UPDATE-DIALOGS-NEW-MESSAGE'
 
 let store = {
 	renderEntireThree() {
@@ -65,7 +69,7 @@ let store = {
 				{id: 1, mes: 'hello'},
 				{id: 2, mes: 'how are you?'}
 			],
-			newPostText: '1'
+			newPostText: ''
 		}
 		,
 		dialogsPage: {
@@ -111,7 +115,7 @@ let store = {
 					img: "https://phonoteka.org/uploads/posts/2021-04/1618996087_3-phonoteka_org-p-fon-na-rabochii-stol-koti-3.jpg"
 				}
 			],
-			newMessages: 'defd'
+			newMessages: ''
 			
 		}
 	},
@@ -131,13 +135,14 @@ let store = {
 	// 	this.state.dialogsPage.messages.push(newMessage)
 	// 	this.renderEntireThree(this.state)
 	// },
+	
 	subscribe(observer) {
 		this.renderEntireThree = observer
 	},
 	
 	dispatch(action) {
 		
-		if (action.type === 'ADD-POST') {
+		if (action.type === ADD_POST) {
 			let newPost = {
 				id: 4,
 				mes: this.state.profilePage.newPostText
@@ -146,12 +151,12 @@ let store = {
 			this.state.profilePage.newPostText = ''
 			this.renderEntireThree(this.state)
 		}
-		else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+		else if (action.type === UPDATE_NEW_POST_TEXT) {
 			this.state.profilePage.newPostText = action.newText
 			this.renderEntireThree(this.state)
 		}
 		
-		else if (action.type === 'ADD-DIALOGS-MESSAGE') {
+		else if (action.type === ADD_DIALOGS_MESSAGE) {
 			let newMessage = {
 				id: 25,
 				name: this.state.dialogsPage.newMessages
@@ -159,10 +164,35 @@ let store = {
 			this.state.dialogsPage.messages.push(newMessage)
 			this.renderEntireThree(this.state)
 		}
-		else if (action.type === 'UPDATE-DIALOGS-NEW-MESSAGE') {
+		else if (action.type === UPDATE_DIALOGS_NEW_MESSAGE) {
 			this.state.dialogsPage.newMessages = action.newText
 			this.renderEntireThree(this.state)
 		}
+	}
+}
+
+// dispatch перенесли в ф ии и вынесли в store
+
+export let addPostCreater = ()=>{
+	return {
+		type: ADD_POST
+	}
+}
+export let onPostChangeCreater = (text) => {
+	return {
+		type: UPDATE_NEW_POST_TEXT,
+		newText: text
+	}
+}
+export let addDialogsMessageCreator = ()=>{
+	return {
+		type: 'ADD-DIALOGS-MESSAGE'
+	}
+}
+export let updateDialogsNewMessageCreator = (text) => {
+	return {
+		type: 'UPDATE-DIALOGS-NEW-MESSAGE',
+		newText: text
 	}
 }
 
