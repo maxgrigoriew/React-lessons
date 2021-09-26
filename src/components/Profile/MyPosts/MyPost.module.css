@@ -21,13 +21,3 @@
     text-transform: uppercase;
 }
 
-.button{
-    background: transparent;
-    padding: 10px 20px;
-    border:none;
-    cursor: pointer;
-    border: 1px solid mediumvioletred;
-    color: mediumvioletred;
-    align-self: center;
-    margin-left: auto;
-}

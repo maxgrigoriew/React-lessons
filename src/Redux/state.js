@@ -54,10 +54,9 @@
 //
 // 	}
 // }
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const ADD_DIALOGS_MESSAGE = 'ADD-DIALOGS-MESSAGE'
-const UPDATE_DIALOGS_NEW_MESSAGE = 'UPDATE-DIALOGS-NEW-MESSAGE'
+import profileReducer from "./profile-reduser";
+import dialogsReducer from "./dialogs-reduser";
+import sidebarReducer from "./sidebar-reduser";
 
 let store = {
 	renderEntireThree() {
@@ -70,13 +69,17 @@ let store = {
 				{id: 2, mes: 'how are you?'}
 			],
 			newPostText: ''
-		}
-		,
+		},
 		dialogsPage: {
 			messages: [
 				{id: 1, name: 'Hallo'},
 				{id: 2, name: 'By'},
 				{id: 3, name: 'You'},
+			],
+			messages1: [
+				{id: 1, name: 'how are you?'},
+				{id: 2, name: 'how are you?'},
+				{id: 3, name: 'how are you?'},
 			],
 			dialogs: [
 				{
@@ -115,13 +118,17 @@ let store = {
 					img: "https://phonoteka.org/uploads/posts/2021-04/1618996087_3-phonoteka_org-p-fon-na-rabochii-stol-koti-3.jpg"
 				}
 			],
-			newMessages: ''
+			newMessages: '1',
+			newMessages1: '332',
 			
-		}
+			
+		},
+		sidebar: {},
 	},
 	getState() {
 		return this.state
 	},
+	//использовали эти ф-ии до применения dispatch
 	// updateNewPostTest(newText){
 	// 	this.state.profilePage.newPostText = newText
 	// 	this.renderEntireThree(this.state)
@@ -141,58 +148,45 @@ let store = {
 	},
 	
 	dispatch(action) {
-		
-		if (action.type === ADD_POST) {
-			let newPost = {
-				id: 4,
-				mes: this.state.profilePage.newPostText
-			};
-			this.state.profilePage.myPosts.push(newPost)
-			this.state.profilePage.newPostText = ''
-			this.renderEntireThree(this.state)
-		}
-		else if (action.type === UPDATE_NEW_POST_TEXT) {
-			this.state.profilePage.newPostText = action.newText
-			this.renderEntireThree(this.state)
-		}
-		
-		else if (action.type === ADD_DIALOGS_MESSAGE) {
-			let newMessage = {
-				id: 25,
-				name: this.state.dialogsPage.newMessages
-			};
-			this.state.dialogsPage.messages.push(newMessage)
-			this.renderEntireThree(this.state)
-		}
-		else if (action.type === UPDATE_DIALOGS_NEW_MESSAGE) {
-			this.state.dialogsPage.newMessages = action.newText
-			this.renderEntireThree(this.state)
-		}
-	}
-}
-
-// dispatch перенесли в ф ии и вынесли в store
-
-export let addPostCreater = ()=>{
-	return {
-		type: ADD_POST
-	}
-}
-export let onPostChangeCreater = (text) => {
-	return {
-		type: UPDATE_NEW_POST_TEXT,
-		newText: text
-	}
-}
-export let addDialogsMessageCreator = ()=>{
-	return {
-		type: 'ADD-DIALOGS-MESSAGE'
-	}
-}
-export let updateDialogsNewMessageCreator = (text) => {
-	return {
-		type: 'UPDATE-DIALOGS-NEW-MESSAGE',
-		newText: text
+		this.state.profilePage = profileReducer(this.state.profilePage, action)
+		this.state.dialogsPage = dialogsReducer(this.state.dialogsPage, action)
+		this.state.sidebar = sidebarReducer(this.state.sidebar, action)
+		this.renderEntireThree(this.state)
+		// if (action.type === ADD_POST) {
+		// 	let newPost = {
+		// 		id: 4,
+		// 		mes: this.state.profilePage.newPostText
+		// 	};
+		// 	this.state.profilePage.myPosts.push(newPost)
+		// 	this.state.profilePage.newPostText = ''
+		// 	this.renderEntireThree(this.state)
+		// } else if (action.type === UPDATE_NEW_POST_TEXT) {
+		// 	this.state.profilePage.newPostText = action.newText
+		// 	this.renderEntireThree(this.state)
+		// } else if (action.type === ADD_DIALOGS_MESSAGE) {
+		// 	let newMessage = {
+		// 		id: 25,
+		// 		name: this.state.dialogsPage.newMessages
+		// 	};
+		// 	this.state.dialogsPage.messages.push(newMessage)
+		// 	this.renderEntireThree(this.state)
+		//
+		// } else if (action.type === UPDATE_DIALOGS_NEW_MESSAGE) {
+		// 	this.state.dialogsPage.newMessages = action.newText
+		// 	this.renderEntireThree(this.state)
+		// }
+		//
+		// else if (action.type === ADD_MESSAGE1) {
+		// 	let newMessage = {
+		// 		id: 25,
+		// 		name: this.state.dialogsPage.newMessages1
+		// 	};
+		// 	this.state.dialogsPage.messages.push(newMessage)
+		// 	this.renderEntireThree(this.state)
+		// } else if (action.type === UPDATE_MESSAGE1) {
+		// 	this.state.dialogsPage.newMessages1 = action.body
+		// 	this.renderEntireThree(this.state)
+		// }
 	}
 }
 
