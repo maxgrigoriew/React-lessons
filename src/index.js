@@ -9,7 +9,7 @@ import App from "./components/App/App";
 let renderEntireThree = () => {
 	ReactDOM.render(
 		<BrowserRouter>
-			<App store={store}
+			<App store={store} dispatch={store.dispatch.bind(store)}
 			/>
 		</BrowserRouter>,
 		document.getElementById('root')
