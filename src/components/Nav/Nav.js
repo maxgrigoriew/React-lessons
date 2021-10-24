@@ -16,6 +16,10 @@ const Nav = (props) => {
 						         style={styles}>Profile</NavLink>
 					</li>
 					<li className={s.nav__item}>
+						<NavLink to="/users" className={`nav-link ${s.nav__link}`}
+						         activeClassName={s.active}>Users</NavLink>
+					</li>
+					<li className={s.nav__item}>
 						<NavLink to="/dialogs" className={`nav-link ${s.nav__link}`}
 						         activeClassName={s.active}>Messages</NavLink>
 					</li>
@@ -23,6 +27,7 @@ const Nav = (props) => {
 						<NavLink to="/news" className={`nav-link ${s.nav__link}`}
 						         activeClassName={s.active}>News</NavLink>
 					</li>
+					
 					<li className={s.nav__item}>
 						<NavLink to="/musik" className={`nav-link ${s.nav__link}`}
 						         activeClassName={s.active}>Musik</NavLink>

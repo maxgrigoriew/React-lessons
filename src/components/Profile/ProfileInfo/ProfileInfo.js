@@ -1,7 +1,7 @@
 import React from "react";
 import s from './ProfileInfo.module.css'
 
-const ProfileInfo = () => {
+const ProfileInfo = (className) => {
 	return (
 		<div className={s.profile__info}>
 			<div className={s.profile__img}>

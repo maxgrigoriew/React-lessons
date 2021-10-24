@@ -1,58 +1,83 @@
 const ADD_DIALOGS_MESSAGE = 'ADD-DIALOGS-MESSAGE'
 const UPDATE_DIALOGS_NEW_MESSAGE = 'UPDATE-DIALOGS-NEW-MESSAGE'
-const UPDATE_MESSAGE1 = 'UPDATE-MESSAGE1'
-const ADD_MESSAGE1 = 'ADD_MESSAGE1'
 
-const dialogsReducer = (state, action) => {
+let initaialSastate = {
+	messages: [
+		{id: 1, name: 'Hallo'},
+		{id: 2, name: 'By'},
+		{id: 3, name: 'You'},
+	],
+	messages1: [
+		{id: 1, name: 'how are you?'},
+		{id: 2, name: 'how are you?'},
+		{id: 3, name: 'how are you?'},
+	],
+	dialogs: [
+		{
+			id: 1,
+			name: 'Max',
+			number: '22',
+			img: "https://proprikol.ru/wp-content/uploads/2020/08/krasivye-kartinki-kotov-22.jpg"
+		},
+		{
+			id: 2,
+			name: 'Nikos',
+			number: '22',
+			img: "https://proprikol.ru/wp-content/uploads/2020/08/krasivye-kartinki-kotikov-42.jpg"
+		},
+		{
+			id: 3,
+			name: 'Anya',
+			number: '22',
+			img: "https://proprikol.ru/wp-content/uploads/2020/08/krasivye-kartinki-kotov-12.jpg"
+		}
+	],
+	navFrendsData: [
+		{
+			id: 1,
+			name: "Max",
+			img: "https://proprikol.ru/wp-content/uploads/2020/08/krasivye-kartinki-kotov-22.jpg"
+		},
+		{
+			id: 2,
+			name: "Nik",
+			img: "https://proprikol.ru/wp-content/uploads/2020/08/krasivye-kartinki-kotikov-42.jpg"
+		},
+		{
+			id: 3,
+			name: "Dasha",
+			img: "https://phonoteka.org/uploads/posts/2021-04/1618996087_3-phonoteka_org-p-fon-na-rabochii-stol-koti-3.jpg"
+		}
+	],
+	newMessages: '',
+}
+const dialogsReducer = (state = initaialSastate, action) => {
 	switch (action.type) {
 		case ADD_DIALOGS_MESSAGE:
-			let newMessage = {
-				id: 25,
-				name: state.newMessages1
+			return {
+				...state,
+				messages: [...state.messages, {id: 33, name: state.newMessages}]
 			};
-			state.messages.push(newMessage);
-			return state;
-		
 		case UPDATE_DIALOGS_NEW_MESSAGE:
-			state.newMessages = action.newText;
-			return state;
-		case ADD_MESSAGE1:
-			let newMessage1 = {
-				id: 25,
-				name: state.newMessages1
+			return {
+				...state,
+				newMessages: action.newText
 			};
-			state.messages.push(newMessage1);
-			return state;
-		
-		case UPDATE_MESSAGE1:
-			state.newMessages1 = action.body;
-			return state;
 		default:
 			return state
 	}
 }
 
-export const addDialogsMessageCreator = () => {
+export const addDialogsMessages = () => {
 	return {
 		type: 'ADD-DIALOGS-MESSAGE'
 	}
 }
-export const updateDialogsNewMessageCreator = (text) => {
+export const updateDialogsNewMessages = (text) => {
 	return {
 		type: 'UPDATE-DIALOGS-NEW-MESSAGE',
 		newText: text
 	}
 }
 
-export const addMessageCreator1 = () => {
-	return {
-		type: ADD_MESSAGE1
-	}
-}
-export const updateDialogsNewMessageCreator1 = (body) => {
-	return {
-		type: UPDATE_MESSAGE1,
-		body: body
-	}
-}
 export default dialogsReducer

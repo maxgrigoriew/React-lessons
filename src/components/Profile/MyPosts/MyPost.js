@@ -4,19 +4,23 @@ import Post from "./Post/Post";
 import {addPostCreater, onPostChangeCreater} from "../../../Redux/profile-reduser";
 
 const MyPost = (props) => {
-	//создаем ссылку на какой либо элемент
 	let newPastElement = React.createRef();
 	let myPostsItems = props.myPosts.map(item => <Post text={item.mes} id={item.id}/>)
 	
-	const addPosts = () => {
-		props.dispatch(addPostCreater())
+	const addPost = () => {
+		props.addPost()
 	}
 	
 	let onPostChange = () => {
 		let text = newPastElement.current.value
-		props.dispatch(onPostChangeCreater(text))
+		props.onPostChange(text)
 	}
-	
+	let handleKeyPress = (e) => {
+		let key = e.keyCode || e.which;
+		if (key === 13) {
+			addPost()
+		}
+	}
 	return (
 		<div className={s.postsTop}>
 			<div className={s.postsTop__inner}>
@@ -24,10 +28,11 @@ const MyPost = (props) => {
 				          ref={newPastElement}
 				          className={`bg-light ${s.textarea}`}
 				          value={props.newPostText}
+				          onKeyPress={handleKeyPress}
 				></textarea>
 				<button className={`btn btn-primary`}
 				        type="button"
-				        onClick={addPosts}>Button
+				        onClick={addPost}>Button
 				</button>
 			</div>
 			{myPostsItems}
