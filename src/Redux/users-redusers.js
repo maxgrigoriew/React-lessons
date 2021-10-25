@@ -11,7 +11,7 @@ let initialState = {
 	isFetching: false,
 	pageSize: 5,
 	pageNumber: 1,
-	totalCount: 0,
+	totalCount: null,
 };
 
 let usersReduser = (state = initialState, action) => {

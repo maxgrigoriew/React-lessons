@@ -1,8 +1,9 @@
+/** @format */
 
 import './App.css';
 import Head from '../Head/Head';
 import Nav from '../Nav/Nav';
-import Profile from '../Profile/Profile';
+import ProfileContainer from '../Profile/ProfileContainer';
 import {Route} from 'react-router-dom';
 import News from '../News/News';
 import UsersContainer from '../Users/UsersContainer';
@@ -16,26 +17,24 @@ function App(props) {
 			<Head />
 			<div className='main-wrapper'>
 				<Nav
-					navFrendsData={
-						props.store.getState().dialogsReducer.navFrendsData
-					}>
-						</Nav>
+				// navFrendsData={
+				// 	// props.store.getState().dialogsReducer.navFrendsData
+				// }
+				></Nav>
 				<div className='app-wrapper-content'>
 					<Route
 						path='/dialogs'
-						component={() => (
-							<DialogsContainer store={props.store}/>
-						)}
+						component={() => <DialogsContainer />}
 					/>
 					<Route
 						path='/profile'
-						component={() => <Profile store={props.store} />}
+						component={() => <ProfileContainer />}
 					/>
 					<Route path='/news' component={News} />
 					<Route
 						path='/users'
 						store={props.store}
-						component={() => <UsersContainer store={props.store} />}
+						component={() => <UsersContainer />}
 					/>
 					<Route path='/musik' component={Mus} />
 					<Route path='/settings' component={Settings} />

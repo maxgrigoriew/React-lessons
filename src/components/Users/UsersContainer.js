@@ -1,7 +1,7 @@
 /** @format */
-import connect from 'react-redux/lib/connect/connect';
-import Users from './Users';
-import React from 'react';
+import {connect} from 'react-redux';
+import UsersAPIContainer from './UsersAPIContainer';
+
 import {
 	setUsers,
 	follow,
@@ -12,7 +12,6 @@ import {
 } from './../../Redux/users-redusers';
 
 let mapStateToProps = (state) => {
-	console.log(state);
 	return {
 		users: state.usersReduser.users,
 		isFetching: state.usersReduser.isFetching,
@@ -22,13 +21,12 @@ let mapStateToProps = (state) => {
 	};
 };
 
-let UsersContainer = connect(mapStateToProps, {
+
+export default connect(mapStateToProps, {
 	setUsers,
 	follow,
 	unfollow,
 	isTotalFetching,
 	setCurentPage,
 	setTotalCount,
-})(Users);
-
-export default UsersContainer;
+})(UsersAPIContainer);

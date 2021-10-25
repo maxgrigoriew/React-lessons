@@ -1,7 +1,7 @@
 /** @format */
 
 import Dialogs from './Dialogs';
-import connect from 'react-redux/lib/connect/connect';
+import {connect} from 'react-redux';
 import {
 	addDialogsMessages,
 	updateDialogsNewMessages,
